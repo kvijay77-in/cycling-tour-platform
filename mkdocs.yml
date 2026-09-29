@@ -1,0 +1,99 @@
+site_name: Cycling Tour Management Platform
+site_description: The complete picture of the Cycling Tour Management Platform - two apps and one backend that keep riders, crews and organizers in sync on every tour day.
+site_url: https://kvijay77-in.github.io/cycling-tour-platform/
+repo_url: https://github.com/kvijay77-in/cycling-tour-platform
+repo_name: kvijay77-in/cycling-tour-platform
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/bike-fast
+    repo: fontawesome/brands/github
+  favicon: assets/favicon.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+not_in_nav: |
+  /assets/screenshots/README.md
+
+nav:
+  - Home: index.md
+  - The Story:
+      - Who it's for: who-its-for.md
+      - A day on tour: a-day-on-tour.md
+  - Features:
+      - Management app: features/management-app.md
+      - Rider app: features/rider-app.md
+      - Gallery: gallery.md
+  - How it works:
+      - Architecture & data flow: how-it-works.md
+      - Security & privacy: security-and-privacy.md
+      - Deployment model: deployment-model.md
+  - Reference:
+      - Glossary: glossary.md
+      - Roadmap: roadmap.md
+      - Resources: resources.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kvijay77-in/cycling-tour-platform
+
+copyright: Cycling Tour Management Platform
