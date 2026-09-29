@@ -22,7 +22,7 @@ You need Python 3.
 pip install -r requirements.txt && mkdocs serve
 ```
 
-Then open <http://127.0.0.1:8000/cycling-tour-platform/>. To run the same check as CI:
+Then open the local URL printed by `mkdocs serve` (usually <http://127.0.0.1:8000/cycling-tour-platform/>). To run the same check as CI:
 
 ```bash
 mkdocs build --strict

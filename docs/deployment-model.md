@@ -11,29 +11,37 @@ flowchart TB
     subgraph OrgA["Organizer A - own AWS account"]
         direction TB
         A_C["Cognito<br/>management pool + rider pool"]
-        A_API["TourDataApi + RiderApi"]
+        A_TA["TourDataApi"]
+        A_RI["RiderApi"]
         A_L["Lambda functions"]
         A_D[("DynamoDB<br/>shared + per-tour tables")]
         A_S[("S3")]
-        A_C --> A_API --> A_L --> A_D
+        A_C -. tokens .-> A_TA & A_RI
+        A_TA --> A_L
+        A_RI --> A_L
+        A_L --> A_D
         A_L --> A_S
     end
 
     subgraph OrgB["Organizer B - own AWS account"]
         direction TB
         B_C["Cognito<br/>management pool + rider pool"]
-        B_API["TourDataApi + RiderApi"]
+        B_TA["TourDataApi"]
+        B_RI["RiderApi"]
         B_L["Lambda functions"]
         B_D[("DynamoDB<br/>shared + per-tour tables")]
         B_S[("S3")]
-        B_C --> B_API --> B_L --> B_D
+        B_C -. tokens .-> B_TA & B_RI
+        B_TA --> B_L
+        B_RI --> B_L
+        B_L --> B_D
         B_L --> B_S
     end
 
-    A_MA["Management app"] --> A_API
-    A_RA["Rider app"] --> A_API
-    B_MA["Management app"] --> B_API
-    B_RA["Rider app"] --> B_API
+    A_MA["Management app"] --> A_TA
+    A_RA["Rider app"] --> A_RI
+    B_MA["Management app"] --> B_TA
+    B_RA["Rider app"] --> B_RI
 
     OrgA ~~~ OrgB
 ```
