@@ -129,7 +129,7 @@ If a rider withdraws from the tour, the team record a **rider exit**. Everyone t
 
 ## Notifications
 
-Organizers can **announce** a message to riders, which riders see in the rider app. **Notification rules** can also send notifications automatically when something happens on the tour.
+Organizers can **announce** a message to riders. Riders get it as a **push** notification on their phone, and it's also kept in their **inbox** in the rider app. **Notification rules** can also send notifications automatically when something happens on the tour.
 
 !!! info "Screenshot to be added"
     **Notification announce**: `assets/screenshots/mgmt-notification-announce.png`

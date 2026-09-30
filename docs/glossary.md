@@ -21,19 +21,27 @@ Ride
 :   One riding day of a tour, with its route and check-in points. The organizer manages each ride's **status** during the day. Ride details are shown to riders in the rider app.
 
 Stage
-:   A section of a ride between two consecutive check-in points, such as start to Pit Stop 1 or Pit Stop 1 to Pit Stop 2.
+:   A check-in point on a ride. Every ride's stages include the **Start** (stage 0) and the **Finish**, with the pit stops in between. For example: Start (stage 0) → Pit Stop 1 (stage 1) → Pit Stop 2 (stage 2) → Finish. The dashboard grid has one column per stage.
 
 Pit Stop
 :   A support point along a ride where a crew looks after riders and records their **check-ins**. Each pit stop crew has its own role, `PS_1` to `PS_5`.
 
 Check-in
-:   A record that a rider reached a check-in point (for example a pit stop). It's made by scanning the rider's QR code in the management app. Check-ins fill the **dashboard grid** for organizers and appear in the rider's **check-in status** and **history** in the rider app.
+:   A record that a rider reached a **stage** (a check-in point such as the Start, a pit stop or the Finish). It's made by scanning the rider's QR code in the management app. Check-ins fill the **dashboard grid** for organizers and appear in the rider's **check-in status** and **history** in the rider app.
 
 Dashboard grid
-:   The live view in the management app, with one row per rider and one column per check-in point, filled in as check-ins arrive.
+:   The live view in the management app, with one row per rider and one column per stage, filled in as check-ins arrive.
 
 Float
-:   A crew member, usually in a support vehicle, who moves along the route rather than staying at one pit stop, and can record check-ins wherever riders are met.
+:   Official transport, arranged by the organizers, that lets a **rider** skip the first part of a ride. Instead of riding from the Start (stage 0), the rider and their bicycle travel by vehicle to a later stage set in the ride's **float plan**, and the rider starts riding from there. The aim is to help riders save energy on a long or hard route so they can still reach the Finish by bike.
+
+    For example:
+
+    - **A long route.** On a 160 km ride that some riders can't cover in full, a float takes those riders to Pit Stop 1 (stage 1) at the 53 km mark.
+    - **A big climb at the end.** On a 100 km ride that ends with a 30 km climb and 2,500 m of elevation gain, a float takes riders to Pit Stop 2 at the 60 km mark. They get about 10 km of warm-up and then ride only the climb.
+
+Float plan
+:   The part of a ride's setup that says which stage the float takes riders to.
 
 Rider Exit
 :   A record that a rider has withdrawn from the tour or from a ride, so they're no longer expected at later check-in points.
@@ -49,13 +57,22 @@ Profile ID
 :   The identifier of a rider's **platform profile**, which is created when they sign up in the rider app. It belongs to the person and stays the same across tours.
 
 Rider ID
-:   The identifier of a rider **within a specific tour**, created when the rider registers for that tour. One Profile ID can have a different Rider ID on each tour.
-
-ID Code
-:   The short code that identifies a rider on a tour. It's the value in the rider's QR code, which crews scan at check-in and in event scans.
+:   The identifier of a rider **within a specific tour**. When a Rider ID is generated, the rider becomes a **confirmed participant** in that tour. One Profile ID can have a different Rider ID on each tour.
 
 Personal Code
-:   A code specific to a rider that can be used to identify them, for example when their QR code isn't available.
+:   The rider's **permanent** identification number, given at **profile** level. It never changes from tour to tour, and **every rider QR code contains the Personal Code**.
+
+ID Code (Rider ID Code)
+:   The rider's **tour-specific** identification number, used only for that tour.
+
+    Each tour keeps a link between each rider's ID Code and their Personal Code. When a crew member scans a rider's QR code, the platform reads the Personal Code and uses this link to find the rider's ID Code for the current tour.
+
+    ```mermaid
+    flowchart LR
+        QR["Rider's QR code"] -- contains --> PC["Personal Code<br/>(permanent, profile level)"]
+        PC -- "tour link" --> IC["ID Code<br/>(this tour only)"]
+        IC --> CI["Check-in / activity<br/>recorded for this tour"]
+    ```
 
 Rider Profile Definition
 :   The organizer's definition of the **profile attributes** (questions and fields) riders must complete. The rider app builds its profile form from these definitions, which is why the profile is called **dynamic**.
@@ -97,7 +114,7 @@ Room Allocation
 ## Communication and files
 
 Notification
-:   A message to riders that appears in the rider app. It can be an **announcement** written by an organizer, or it can be created automatically by a **notification rule**.
+:   A message to riders. Notifications are delivered in two ways: as a **push** notification to the rider's phone, and into the **inbox** in the rider app, where riders can read them later. A notification can be an **announcement** written by an organizer, or it can be created automatically by a **notification rule**.
 
 Notification Rule
 :   A rule configured for a tour that creates a notification automatically when a matching situation occurs on the tour.

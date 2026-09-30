@@ -127,7 +127,7 @@ flowchart LR
 - **Tour browsing and registration**
 - A **tour dashboard** and **ride details**
 - **Check-in status and history**
-- **Notifications**
+- **Notifications**, delivered by push and kept in the in-app inbox
 - A **training challenge**
 
 !!! note "The rider app needs a connection"

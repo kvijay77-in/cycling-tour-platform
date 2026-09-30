@@ -71,7 +71,10 @@ When a crew member scans a rider's QR code at a pit stop, the rider can see the 
 
 ## Notifications
 
-Announcements from the organizers, and notifications sent automatically by notification rules, appear in the rider's **notifications**.
+Announcements from the organizers, and notifications sent automatically by notification rules, reach riders in two ways:
+
+- **Push**: an alert on the rider's phone as soon as the notification is sent.
+- **Inbox**: every notification is kept in the app so riders can read it later.
 
 !!! info "Screenshot to be added"
     **Notifications**: `assets/screenshots/rider-notifications.png`

@@ -6,7 +6,7 @@ This page follows a tour from the rider's point of view and shows where the plat
 
 ## The journey
 
-The journey diagram scores each step from 1 (stressful) to 5 (delightful). It shows the rider's experience next to the crew's, stage by stage.
+The journey diagram scores each step from 1 (stressful) to 5 (delightful). It shows the rider's experience next to the crew's, step by step.
 
 ```mermaid
 journey
@@ -43,7 +43,9 @@ Before the first ride, riders sign up in the **rider app**, complete their profi
 
 ### :material-weather-sunset-up: Morning: bags on, riders out
 
-The baggage crew scan every bag onto the truck (**baggage load**). The organizer sets the ride status, riders check the day's **ride details** in the rider app, and the ride starts.
+The baggage crew scan every bag onto the truck (**baggage load**). The organizer sets the ride status, riders check the day's **ride details** in the rider app, and the ride starts from the **Start** (stage 0).
+
+On a long or hard ride, the organizers may run a **float**. Riders who choose it travel with their bicycles by vehicle to a later stage set in the float plan (for example, Pit Stop 1), and start riding from there. They save energy for the tougher part of the route and still reach the Finish by bike.
 
 ### :material-map-marker-radius: On the road: pit stops
 
@@ -99,8 +101,9 @@ sequenceDiagram
     MA->>BE: Fetch dashboard data
     Org->>MA: Announce an update
     MA->>BE: Create notification
-    RA->>BE: Fetch notifications
-    RA-->>Rider: Shows the announcement
+    BE-->>Rider: Push notification to phone
+    RA->>BE: Fetch inbox
+    RA-->>Rider: Shows the announcement in the inbox
 
     Note over Rider,BE: Evening
     Crew->>MA: Scan bags off truck (baggage unload)

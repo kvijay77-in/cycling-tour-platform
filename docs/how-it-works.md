@@ -131,10 +131,15 @@ stateDiagram-v2
 
 ## Notification flow
 
-Notifications reach riders in two ways:
+A notification starts in one of two ways:
 
 1. **Announcements**: an organizer writes a message in the management app.
 2. **Notification rules**: rules configured for the tour create notifications automatically when something happens.
+
+It then reaches riders through two channels:
+
+- **Push**: an alert is sent to the rider's phone.
+- **Inbox**: the notification is stored, and the rider app shows it in the rider's inbox.
 
 ```mermaid
 flowchart LR
@@ -143,11 +148,13 @@ flowchart LR
     TA --> FN["Lambda<br/>notifications"]
     Rules["Notification rules"] -. trigger .-> FN
     Tour["Something happens on the tour"] -. matches a rule .-> Rules
-    FN --> DB[("DynamoDB")]
-    RA["Rider app"] -- fetch notifications --> RI["RiderApi"]
+    FN -- store for inbox --> DB[("DynamoDB")]
+    FN -- push --> Phone["Rider's phone<br/>push notification"]
+    RA["Rider app"] -- fetch inbox --> RI["RiderApi"]
     RI --> FN
     FN -- reads --> DB
-    RA --> Rider["Rider"]
+    Phone --> Rider["Rider"]
+    RA -- inbox --> Rider
 ```
 
 ---
