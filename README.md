@@ -36,6 +36,7 @@ requirements.txt               # Python dependencies for building the site
 .github/workflows/docs.yml     # build on PR; build and deploy to GitHub Pages on push to main
 docs/
 ├── index.md                   # Home - the story of a tour day
+├── user-guide.md              # Quick rider and organizer workflows
 ├── who-its-for.md
 ├── a-day-on-tour.md
 ├── features/

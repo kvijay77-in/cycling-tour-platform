@@ -13,7 +13,7 @@ journey
     title A rider's day on tour
     section Day 0 - Registration
       Sign up and complete profile in the rider app: 4: Rider
-      Register for the tour: 4: Rider
+      Confirm tour enrollment with the organizer: 4: Rider
       Arrive, get scanned at Day 0 registration: 5: Rider, Crew
     section Morning
       Check today's ride details: 5: Rider
@@ -39,7 +39,7 @@ journey
 
 ### :material-numeric-0-circle: Day 0: registration
 
-Before the first ride, riders sign up in the **rider app**, complete their profile and register for the tour. On **Day 0**, the day before the first ride, riders arrive in person. The crew run the **Day 0 registration** event in the management app and scan each rider as they check in.
+Before the first ride, riders sign up in the **rider app** and complete their profile. Tour enrollment is arranged with the organizer; the app's separate tour registration screen is not linked from the current menu. If the organizer enables event registration, riders can register for a specific planned occurrence in the rider app. When event registration is disabled, all eligible tour riders participate. On **Day 0**, the day before the first ride, riders arrive in person. The crew run the **Day 0 registration** event in the management app and scan each rider as they check in. For active occurrences, the rider app shows progress and offers only permitted self-service activity actions; baggage custody and reconciliation remain staff functions.
 
 ### :material-weather-sunset-up: Morning: bags on, riders out
 
@@ -49,7 +49,7 @@ On a long or hard ride, the organizers may run a **float**. Riders who choose it
 
 ### :material-map-marker-radius: On the road: pit stops
 
-At each pit stop, the crew (`PS_1` to `PS_5`) scan riders' QR codes as they arrive. Each scan becomes a **check-in**. If there's no signal, the management app saves the scan on the phone and syncs it later. If a rider withdraws, the crew record a **rider exit**.
+At each pit stop, the crew (`PS_1` to `PS_5`) scan riders' QR codes as they arrive. Each scan becomes a **check-in**. Where the active ride's backend policy permits, a rider may also submit their own check-in from Home or today's Check-In view; this requires a connection and does not replace crew scanning. A rider who needs to stop should quit at a Pit Stop where possible so the team can arrange safe transport. If there's no signal, the management app saves crew scans on the phone and syncs them later. If a rider withdraws, the crew record a **rider exit**.
 
 ### :material-view-grid: At base: the live dashboard
 
@@ -80,8 +80,13 @@ sequenceDiagram
     participant BE as Platform backend
 
     Note over Rider,BE: Day 0 - registration
-    Rider->>RA: Sign up, complete profile, register for tour
-    RA->>BE: Save profile and tour registration
+    Rider->>RA: Sign up and complete profile
+    RA->>BE: Save rider profile
+    Rider->>Org: Arrange tour enrollment
+    opt Event registration is enabled
+      Rider->>RA: Register for a planned event occurrence
+      RA->>BE: Save occurrence registration
+    end
     Crew->>MA: Scan rider at Day 0 registration
     MA->>BE: Record activity for the registration occurrence
 
@@ -113,4 +118,4 @@ sequenceDiagram
     RA->>BE: Fetch check-ins for this rider
 ```
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-10-02_

@@ -87,6 +87,7 @@ nav:
       - Security & privacy: security-and-privacy.md
       - Deployment model: deployment-model.md
   - Reference:
+      - User guide: user-guide.md
       - Glossary: glossary.md
       - Roadmap: roadmap.md
       - Resources: resources.md

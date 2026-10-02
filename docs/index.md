@@ -82,6 +82,7 @@ Tomorrow they do it all again.
 -   :material-weather-sunset-up: [**A day on tour**](a-day-on-tour.md): the rider's journey from Day 0 to the hotel
 -   :material-clipboard-list: [**Management app**](features/management-app.md): the tools organizers and crews use
 -   :material-bike: [**Rider app**](features/rider-app.md): what riders see
+-   :material-book-open-page-variant: [**Platform user guide**](user-guide.md): quick guidance for riders and organizers
 -   :material-sitemap: [**How it works**](how-it-works.md): architecture and data flow
 -   :material-shield-check: [**Security & privacy**](security-and-privacy.md): roles, sign-in and data ownership
 -   :material-cloud: [**Deployment model**](deployment-model.md): one organizer, one AWS environment
@@ -89,4 +90,4 @@ Tomorrow they do it all again.
 
 </div>
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-10-02_
