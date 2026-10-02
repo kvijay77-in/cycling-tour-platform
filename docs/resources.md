@@ -38,6 +38,8 @@ The React Native / Expo app (Android and web) for organizers and crews. It works
 
 The React Native / Expo app for riders.
 
+Tour and ride artifact manifests, download behavior, and document viewing are described in the [Rider App feature guide](features/rider-app.md#tour-and-ride-documents).
+
 | | |
 |---|---|
 | Repository | [kvijay77-in/tour-rider-app](https://github.com/kvijay77-in/tour-rider-app) |
@@ -53,5 +55,6 @@ The React Native / Expo app for riders.
 | Repository | [kvijay77-in/cycling-tour-platform](https://github.com/kvijay77-in/cycling-tour-platform) |
 | Live site | [kvijay77-in.github.io/cycling-tour-platform](https://kvijay77-in.github.io/cycling-tour-platform/) |
 | Platform glossary | [Glossary](glossary.md) |
+| Platform user guide | [User guide](user-guide.md) |
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-10-02_

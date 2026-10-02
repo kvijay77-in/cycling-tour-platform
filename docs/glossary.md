@@ -27,7 +27,16 @@ Pit Stop
 :   A support point along a ride where a crew looks after riders and records their **check-ins**. Each pit stop crew has its own role, `PS_1` to `PS_5`.
 
 Check-in
-:   A record that a rider reached a **stage** (a check-in point such as the Start, a pit stop or the Finish). It's made by scanning the rider's QR code in the management app. Check-ins fill the **dashboard grid** for organizers and appear in the rider's **check-in status** and **history** in the rider app.
+:   A record that a rider reached a **stage** (a check-in point such as the Start, a pit stop or the Finish). It can be made by scanning the rider's QR code or, where the backend policy permits, by the rider through the Rider API. Check-ins fill the **dashboard grid** for organizers and appear in the rider's **check-in status** and **history** in the rider app. Rider-created records use the `SELF_SERVICE` method and are labelled **Self** in the app.
+
+Self check-in
+:   A check-in submitted by the signed-in rider through the Rider API, when the active tour, today's live ride, rider enrollment and backend-resolved `selfService` policy allow it. The rider confirms the action in the app. It is separate from a staff member's QR scan or manual check-in.
+
+Quit Riding
+:   A rider check-in that records the rider stopping a ride after it has started. The Rider API permits it only under the tour/ride policy, while the ride is started and before a Finish check-in. It cannot be cancelled in the rider app; organizers must first make sure the rider is safe before restoring them to the ride. Riders should quit at a Pit Stop where possible so the team can arrange safe transport; if quitting on the road, they should contact the organizers immediately.
+
+Check-in history availability
+:   The Rider API may return no records when a ride has not started, no check-in table exists yet, or the rider has no check-ins. The rider app renders this as an unavailable/empty state rather than a transport failure; a real authorization or network error remains an error.
 
 Dashboard grid
 :   The live view in the management app, with one row per rider and one column per stage, filled in as check-ins arrive.
@@ -96,8 +105,14 @@ Activity
 Activity Log
 :   The recorded history of activities in an occurrence: who did what, and when.
 
+Event registration
+:   A rider's registration for one event occurrence. When registration is enabled, riders can register or unregister only while the occurrence is `PLANNED`; when disabled, all tour riders participate.
+
+Event self-service
+:   A rider-created activity record submitted through the Rider API while an occurrence is `ACTIVE` and the backend-resolved activity permission allows it. The rider app labels records made with `SELF_SERVICE` as **Self**. The backend enforces prerequisites, sequence, option choices, and record ownership.
+
 Baggage status
-:   Where a rider's bag is in the daily load and unload cycle, as recorded by baggage activities. **Baggage reconciliation** compares the bags loaded with the bags unloaded, so missing bags can be found.
+:   Where a rider's bag is in the daily load and unload cycle, as recorded by baggage activities. **Baggage reconciliation** is a staff-side Management App function that compares load and unload records; riders cannot release baggage or reconcile custody in the rider app.
 
 ---
 
@@ -120,7 +135,7 @@ Notification Rule
 :   A rule configured for a tour that creates a notification automatically when a matching situation occurs on the tour.
 
 Artifact
-:   A file that belongs to a tour. The backend stores artifacts in the organizer's own S3 storage.
+:   A file attached to a tour or ride and listed in that scope's artifact manifest. The backend stores it in the organizer's S3 storage; the rider app downloads it to app-private storage and opens it with the device's share/view sheet. Presigned download links are short-lived and fetched when needed.
 
 Training challenge
 :   A feature of the rider app that gives riders a training goal to work towards before the tour.

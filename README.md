@@ -36,6 +36,7 @@ requirements.txt               # Python dependencies for building the site
 .github/workflows/docs.yml     # build on PR; build and deploy to GitHub Pages on push to main
 docs/
 ├── index.md                   # Home - the story of a tour day
+├── user-guide.md              # Quick rider and organizer workflows
 ├── who-its-for.md
 ├── a-day-on-tour.md
 ├── features/
@@ -49,10 +50,14 @@ docs/
 ├── gallery.md
 ├── resources.md
 └── assets/
+    ├── javascripts/
+    │   └── mermaid-zoom.js    # click-to-open pan/zoom viewer for Mermaid diagrams
+    ├── stylesheets/
+    │   └── mermaid-zoom.css   # styles for the diagram viewer
     └── screenshots/           # app screenshots (see README.md inside)
 ```
 
-All diagrams are written in [Mermaid](https://mermaid.js.org/) inside ```` ```mermaid ```` code blocks.
+All diagrams are written in [Mermaid](https://mermaid.js.org/) inside ```` ```mermaid ```` code blocks. On the site, clicking (or pressing Enter on) a diagram opens it in a full-screen viewer: scroll/pinch or the toolbar buttons zoom, dragging pans, and Esc closes.
 
 ## Adding screenshots
 
@@ -72,4 +77,4 @@ Before the first deployment, a repository admin needs to do this once:
 
 **Settings → Pages → Build and deployment → Source = GitHub Actions**
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-10-02_

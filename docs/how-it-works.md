@@ -64,6 +64,7 @@ This is what happens when a pit stop crew member scans a rider's QR code.
 sequenceDiagram
     autonumber
     actor Crew as Pit stop crew (PS_n)
+    actor Rider as Rider
     participant MA as Management app
     participant Q as Local SQLite + sync queue
     participant API as TourDataApi
@@ -95,9 +96,33 @@ sequenceDiagram
     RI->>FN: Forward request
     FN->>DB: Read this rider's check-ins
     FN-->>RA: Check-in status & history
+    Rider->>RA: Open a registered ride
+    RA->>RI: Load check-in history
+    RI-->>RA: Records or a no-records state
+    Rider->>RA: Open Home or today's Check-In view
+    RA->>RI: Load today's ride and current check-in information
+    RI-->>RA: Live ride, available actions and rider records
+    Rider->>RA: Confirm a permitted self-check-in
+    RA->>RI: Submit the check-in
+    RI->>FN: Check enrollment, ride state and current policy
+    FN->>DB: Store check-in
+    DB-->>FN: OK
+    FN-->>RA: Updated check-in result
+    Rider->>RA: Cancel an eligible owned record
+    RA->>RI: Request cancellation
+    RI->>FN: Check ownership and current cancellation rules
+    FN->>DB: Mark record cancelled
+    DB-->>FN: OK
+    FN-->>RA: Updated record state
 ```
 
+The rider app bases self check-in on today's live ride and current records, not saved tour information. The backend checks current permissions when a rider acts. The app never offers cancellation for Quit Riding: organizers must confirm the rider is safe before allowing them to resume. Self check-in requires a connection and does not use QR scanning or the management app's offline queue.
+
 ---
+
+## Rider event participation
+
+For event participation, the rider app shows a tour's events, scheduled occurrences and the rider's activity progress. Riders can register only while an occurrence is planned; during an active occurrence, available self-service actions depend on the organizer's current settings. The backend checks registration, permissions, activity order, prerequisites, choices and record ownership. The rider app does not handle baggage custody or reconciliation.
 
 ## Offline sync in the management app
 
@@ -168,4 +193,4 @@ flowchart LR
 | Rider app | `tour-rider-app` | React Native / Expo app for riders |
 | This site | `cycling-tour-platform` | The platform overview and the platform glossary |
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-10-02_
