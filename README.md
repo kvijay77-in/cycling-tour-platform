@@ -76,7 +76,7 @@ The site is deployed by GitHub Actions (`.github/workflows/docs.yml`):
 Before the first deployment, a repository admin needs to do this once:
 
 ## License
-Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). Free for learning and non-commercial use. For commercial use, contact [kvijay77-in@gmail.com].
+Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). Free for learning and non-commercial use. For commercial use, contact [kvijay77-in@gmail.com].
 **Settings → Pages → Build and deployment → Source = GitHub Actions**
 
 _Last updated: 2026-10-02_
