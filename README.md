@@ -74,7 +74,7 @@ The site is deployed by GitHub Actions (`.github/workflows/docs.yml`):
 - **Push to `main`:** the site is built and deployed to GitHub Pages.
 
 Before the first deployment, a repository admin needs to do this once:
-
 **Settings → Pages → Build and deployment → Source = GitHub Actions**
 
-_Last updated: 2026-10-02_
+## License
+Licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). Free for learning and non-commercial use. For commercial use, contact [kvijay77-in@gmail.com].
